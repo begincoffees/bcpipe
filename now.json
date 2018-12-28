@@ -1,0 +1,18 @@
+{
+  "features": {
+    "cloud": "v1"
+  },
+  "build": {
+    "env": {
+      "PRISMA_ENDPOINT":"https://begincoffeesprisma.herokuapp.com/bcprisma/test",
+      "PRISMA_SECRET":"576eef8cb1f325292da28c44ff8c48237782409c",
+      "PRISMA_MANAGEMENT_API_SECRET":"576eef8cb1f325292da28c44ff8c48237782409c",
+      "APP_SECRET":"bigboi",
+      "PRISMA_TOKEN":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NDQ3NDc2MjgsIm5iZiI6MTU0NDY2MTIyOH0.gqD8b3TBOKyn8Kq9zWU_WuS4H1RebVwVLW-9VYwvCeg",
+      "DATABASE_URL":"postgres://mjzrnqvvypojgj:cbead189e5f7a830c50ddba92e3d05c43f81b2ced0e471fb59eb8e47da922eae@ec2-54-225-98-131.compute-1.amazonaws.com:5432/d12q7iv4lq5rbj",
+      "STRIPE_SECRET":"sk_test_txLGX8cbuvZv44l5TTCuX7S3",
+      "STRIPE_TOKEN":"pk_test_1bBvKu6nYI7TTlZrsyb0svtq",
+      "PRISMA_CONFIG":"./prisma.yml"
+    }
+  }
+}

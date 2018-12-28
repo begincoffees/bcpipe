@@ -1,0 +1,60 @@
+version: '3'
+services:
+  www:
+    container_name: www
+    image: nginx:1.13.12-alpine
+    restart: always
+    networks:
+      - bcapp-staging
+    build:
+      context: ./bcclient
+      dockerfile: ./Dockerfile
+    ports:
+      - "80:80"
+    volumes:
+      - .:/usr/app/bcclient
+      - /usr/share/nginx/html
+  server:
+    container_name: bcapi
+    build: .
+    command: npm start
+    restart: always
+    networks:
+      - bcapp-staging   
+    build:
+      context: ./bcapi
+      dockerfile: ./Dockerfile
+    ports:
+      - "6006:6006"
+    volumes:
+      - .:/usr/app/bcapi
+      - /usr/app/server
+  prisma:
+    image: prismagraphql/prisma:1.17.1
+    restart: always
+    ports:
+      - "4466:4466"
+    networks:
+      - bcapp-staging  
+    environment:
+      PRISMA_CONFIG:
+      JAVA_OPTS: -Xmx358m
+
+  postgres:
+    image: postgres
+    restart: always
+    networks:
+      - bcapp-staging    
+    environment:
+      POSTGRES_USER: prisma
+      POSTGRES_PASSWORD: prisma
+    volumes:
+      - postgres:/var/lib/postgresql/data      
+volumes:
+  www:
+  postgres:
+  prisma:
+  server:
+networks:
+  bcapp-staging:
+    external: true

@@ -1,0 +1,9 @@
+port: 4466
+managementApiSecret: 576eef8cb1f325292da28c44ff8c48237782409c
+databases:
+  default:
+    connector: postgres
+    migrations: true
+    connectionLimit: 2
+    uri: ${DATABASE_URL}?ssl=1
+ 
